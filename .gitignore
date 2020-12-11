@@ -5,3 +5,5 @@
 /CookieSet.json
 /jdCookie.js
 /.vscode
+**/deploy_tencent_scf.yml
+**/repo_sync.yml
