@@ -1,14 +1,14 @@
 
-name: jd_jdfactory.js
+name: jd_kd.js
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '36 * * * *'
+    - cron: '23 1 * * *'
   watch:
     types: started
   repository_dispatch:
-    types: jd_jdfactory.js
+    types: jd_kd.js
 jobs:
   build:
 
@@ -33,9 +33,9 @@ jobs:
       - name: npm install
         run: |
           npm install
-      - name: 'running jd_jdfactory.js'
+      - name: 'running jd_kd.js'
         run: |
-          node jd_jdfactory.js
+          node jd_kd.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG }}

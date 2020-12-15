@@ -1,14 +1,15 @@
 
-name: jd_jdfactory.js
+template = """
+name: [place_holder]
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '36 * * * *'
+    - cron: '[crontab_place_holder]'
   watch:
     types: started
   repository_dispatch:
-    types: jd_jdfactory.js
+    types: [place_holder]
 jobs:
   build:
 
@@ -33,9 +34,9 @@ jobs:
       - name: npm install
         run: |
           npm install
-      - name: 'running jd_jdfactory.js'
+      - name: 'running [place_holder]'
         run: |
-          node jd_jdfactory.js
+          node [place_holder]
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG }}
@@ -48,3 +49,28 @@ jobs:
           DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
           IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
 
+"""
+
+import re
+
+cron_re = "[-|0-9| |,|*|\\/]* \\*"
+script_re = "j[_|a-zA-Z]*\\.js"
+
+file = open("./docker/crontab_list.sh", "r", encoding='utf-8')
+
+
+try:
+    text_lines = file.readlines()
+    # print(type(text_lines), text_lines)
+    for line in text_lines:
+        cron = re.search(cron_re, line)
+        script = re.search(script_re, line)
+        if script:
+            print(cron.group(0))
+            print(script.group(0))
+            s = template.replace("[place_holder]", script.group(0)).replace("[crontab_place_holder]", cron.group(0))
+            output = open("./test/" + script.group(0).replace("js", "yml"), "w", encoding='utf-8')
+            output.write(s)
+            output.close()
+finally:
+    file.close()
