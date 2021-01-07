@@ -1,14 +1,14 @@
 
-name: jd_blueCoin.js
+name: jd_car_exchange.js
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0,30 0 * * *'
+    - cron: '0 0 * * *'
   watch:
     types: started
   repository_dispatch:
-    types: jd_blueCoin.js
+    types: jd_car_exchange.js
 jobs:
   build:
 
@@ -33,9 +33,9 @@ jobs:
       - name: npm install
         run: |
           npm install
-      - name: 'running jd_blueCoin.js'
+      - name: 'running jd_car_exchange.js'
         run: |
-          node jd_blueCoin.js
+          node jd_car_exchange.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG }}

@@ -1,14 +1,14 @@
 
-name: jd_blueCoin.js
+name: jd_get_share_code.js
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0,30 0 * * *'
+    - cron: '47 7 * * *'
   watch:
     types: started
   repository_dispatch:
-    types: jd_blueCoin.js
+    types: jd_get_share_code.js
 jobs:
   build:
 
@@ -33,9 +33,9 @@ jobs:
       - name: npm install
         run: |
           npm install
-      - name: 'running jd_blueCoin.js'
+      - name: 'running jd_get_share_code.js'
         run: |
-          node jd_blueCoin.js
+          node jd_get_share_code.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG }}
