@@ -53,7 +53,7 @@ jobs:
 
 import re
 
-cron_re = "[-|0-9| |,|*|\\/]* \\*"
+cron_re = "[-|0-9| |,|*|\\/]* \\* [0-9]*"
 script_re = "j[_|a-zA-Z]*\\.js"
 
 file = open("C:/Users/baiti/Desktop/work/JD/jd_scripts/docker/crontab_list.sh", "r", encoding='utf-8')
