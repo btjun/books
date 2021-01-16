@@ -4,7 +4,7 @@ name: jd_moneyTree.js
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 */2 * * *'
+    - cron: '0 */2 * * * '
   watch:
     types: started
   repository_dispatch:

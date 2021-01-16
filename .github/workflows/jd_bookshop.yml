@@ -1,14 +1,14 @@
 
-name: jd_health.js
+name: jd_bookshop.js
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '10 0 * * *'
+    - cron: '7 8,12,18 * * * '
   watch:
     types: started
   repository_dispatch:
-    types: jd_health.js
+    types: jd_bookshop.js
 jobs:
   build:
 
@@ -33,9 +33,9 @@ jobs:
       - name: npm install
         run: |
           npm install
-      - name: 'running jd_health.js'
+      - name: 'running jd_bookshop.js'
         run: |
-          node jd_health.js
+          node jd_bookshop.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG }}

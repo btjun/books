@@ -4,7 +4,7 @@ name: jd_bean_sign.js
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 0,18 * * *'
+    - cron: '0 0,18 * * * '
   watch:
     types: started
   repository_dispatch:

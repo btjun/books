@@ -4,7 +4,7 @@ name: jd_pigPet.js
 on:
   workflow_dispatch:
   schedule:
-    - cron: '12 * * * *'
+    - cron: '12 * * * * '
   watch:
     types: started
   repository_dispatch:

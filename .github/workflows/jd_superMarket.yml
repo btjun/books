@@ -4,7 +4,7 @@ name: jd_superMarket.js
 on:
   workflow_dispatch:
   schedule:
-    - cron: '11 1-23/5 * * *'
+    - cron: '11 1-23/5 * * * '
   watch:
     types: started
   repository_dispatch:
